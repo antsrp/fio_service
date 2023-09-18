@@ -1,0 +1,9 @@
+CREATE TABLE PERSONS(
+id bigserial PRIMARY KEY,
+name VARCHAR(30) NOT NULL,
+surname VARCHAR(30) NOT NULL,
+patronym VARCHAR(30),
+age INT NOT NULL,
+gender VARCHAR(20) NOT NULL,
+nationality VARCHAR(10) NOT NULL
+);
