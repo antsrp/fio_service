@@ -25,7 +25,7 @@ migratedown: --setpath
 
 docker-start:
 	docker compose build --no-cache
-	docker compose up
+	docker compose up -d
 
 --setpath:
 	$(eval dbpath = $(DB_TYPE)://$(DB_USER):$(DB_PASS)@$(DB_HOST):$(DB_PORT)/$(DB_NAME)?sslmode=disable)
