@@ -13,7 +13,7 @@ import (
 	igql "github.com/antsrp/fio_service/internal/interfaces/graphql"
 	"github.com/antsrp/fio_service/internal/mapper"
 	"github.com/antsrp/fio_service/internal/usecases/service"
-	"github.com/go-chi/chi"
+	"github.com/go-chi/chi/v5"
 
 	"github.com/graphql-go/handler"
 )
@@ -29,8 +29,6 @@ func NewHandler(srv *service.Service) *Handler {
 }
 
 func (h Handler) Routes(api igql.PersonAPI) chi.Router {
-
-	//fileServer := http.FileServer(http.Dir(service.REPORTS_RELATIVE_PATH))
 
 	gqlHandler := handler.New(&handler.Config{
 		Schema:     graphql.InitSchema(api),
