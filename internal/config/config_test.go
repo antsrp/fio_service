@@ -2,6 +2,8 @@ package config
 
 import (
 	"log"
+	"os"
+	"path/filepath"
 	"testing"
 
 	"github.com/antsrp/fio_service/internal/infrastructure/broker"
@@ -10,9 +12,17 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
+func init() {
+	path, _ := os.Getwd()
+	if base := filepath.Base(path); base == "config" {
+		dir := filepath.Join(path, "../..")
+		os.Chdir(dir)
+	}
+}
+
 func TestWithLoad(t *testing.T) {
 	if err := godotenv.Load(); err != nil {
-		log.Fatal("No .env file found")
+		log.Fatalf("can't load env variables: %v", err.Error())
 	}
 
 	prefix := "BROKER"
